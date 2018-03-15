@@ -1,0 +1,20 @@
+---
+
+- include_tasks: percona-official-repo.yml
+  when: pmm_client_enabled
+  tags: [packages, percona, pmm]
+
+- include_tasks: install.yml
+  when: pmm_client_enabled
+  tags: [packages, percona, pmm]
+
+- include_tasks: server-config.yml
+  when: pmm_client_enabled
+  tags: [client, percona, pmm, server]
+
+- include_tasks: client-services.yml
+  when: pmm_client_enabled
+  tags: [client, percona, pmm, services]
+
+- include_tasks: uninstall.yml
+  when: not pmm_client_enabled

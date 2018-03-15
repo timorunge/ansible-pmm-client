@@ -1,0 +1,38 @@
+---
+
+- name: Adding Linux and ProxySQL services to monitoring
+  shell: "if ! pmm-admin list | grep {{ item | quote }} ; then pmm-admin add {{ item | quote }} ; fi"
+  when: >
+        ('linux:metrics' in item) or
+        ('proxysql:metrics' in item)
+  with_items: "{{ pmm_client_add_services }}"
+
+- name: Adding MySQL and MongoDB services to monitoring
+  shell: >
+         if ! pmm-admin list | grep {{ item | quote }} ; then
+         pmm-admin add {{ item | quote }} --host {{ pmm_client_db[item][host] | quote }}
+         --port {{ pmm_client_db[item][port] | quote }} --user {{ pmm_client_db[item][username] | quote }}
+         --password {{ pmm_client_db[item][password] | quote }} {{ pmm_client_db[item][parameters] | quote }} ; fi
+  when: >
+        ('linux:metrics' not in item) and
+        ('proxysql:metrics' not in item) or
+        ('mysql' == item or 'mongodb' == item)
+  with_items: "{{ pmm_client_add_services }}"
+
+- name: Removing services from monitoring
+  shell: "if pmm-admin list | grep {{ item | quote }} ; then pmm-admin remove {{ item | quote }} ; fi"
+  with_items: "{{ pmm_client_remove_services }}"
+
+- name: Start monitoring services
+  service:
+    name: "{{ pmm_service_names[item] }}"
+    state: started
+    enabled: yes
+  with_items: "{{ pmm_client_start_services }}"
+
+- name: Stop monitoring services
+  service:
+    name: "{{ pmm_service_names[item] }}"
+    state: stopped
+    enabled: no
+  with_items: "{{ pmm_client_stop_services }}"

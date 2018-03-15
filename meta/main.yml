@@ -1,0 +1,27 @@
+---
+
+galaxy_info:
+  author: Timo Runge
+  description: PMM Client for Debian/Ubuntu and RHEL/CentOS
+  license: BSD
+  min_ansible_version: 2.2.0
+  platforms:
+  - name: EL
+    versions:
+      - all
+  - name: Fedora
+    versions:
+      - all
+  - name: Debian
+    versions:
+      - all
+  - name: Ubuntu
+    versions:
+      - all
+  galaxy_tags:
+    - pmm
+    - percona
+    - monitoring
+    - database
+
+dependencies: []

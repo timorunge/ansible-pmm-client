@@ -1,0 +1,24 @@
+---
+
+- name: Install PMM Client packages from official repo
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ pmm_client_pkgs }}"
+  when: (pmm_client_use_official_repo)
+
+- name: Install PMM Client package from URL - Debian based distributions
+  apt:
+    deb: "{{ pmm_client_debian_pkg }}"
+    state: present
+  when: >
+        (not pmm_client_use_official_repo) and
+        (ansible_os_family == 'Debian')
+
+- name: Install PMM Client package from URL - RedHat based distributions
+  yum:
+    name: "{{ pmm_client_redhat_pkg }}"
+    state: present
+  when: >
+        (not pmm_client_use_official_repo) and
+        (ansible_os_family == 'RedHat')

@@ -1,0 +1,83 @@
+---
+
+# General
+
+# Enable the client installation. Set to false to uninstall the PMM client.
+pmm_client_enabled: true
+
+# List of packages:
+pmm_client_pkgs:
+  - pmm-client
+
+# Define service names (no need to change those values):
+pmm_service_names:
+  linux:metrics: pmm-linux-metrics-42000
+  mysql:queries: pmm-mysql-queries-0
+  mysql:metrics: pmm-mysql-metrics-42002
+  mongodb:queries: pmm-mongodb-queries-0
+  mongodb:metrics: pmm-mongodb-metrics-42003
+  proxysql:metrics: pmm-proxysql-metrics-42004
+
+
+# Repository
+
+# Use the official Percona repository:
+pmm_client_use_official_repo: true
+
+# URLs to configure Percona repositories:
+pmm_client_debian_repo: "https://repo.percona.com/apt/percona-release_0.1-5.{{ansible_distribution_release}}_all.deb"
+pmm_client_redhat_repo: https://www.percona.com/redir/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm
+
+# URLs for direct download of the Percona PMM Client.
+# To use a direct download please set pmm_client_use_official_repo to false.
+pmm_client_debian_pkg: "https://www.percona.com/downloads/pmm/1.8.1/binary/debian/xenial/x86_64/pmm-client_1.8.1-1.{{ ansible_distribution_release }}_amd64.deb"
+pmm_client_redhat_pkg: https://www.percona.com/downloads/pmm/1.8.1/binary/redhat/7/x86_64/pmm-client-1.8.1-1.x86_64.rpm
+
+
+# Server
+
+# IP address and port of the PMM Server
+pmm_client_server_host: localhost
+pmm_client_server_port: 443
+
+# If the PMM Server is using basic auth:
+pmm_client_server_basic_auth: true
+pmm_client_server_basic_auth_username: admin
+pmm_client_server_basic_auth_password: admin
+
+# If you have used a self signed SSL certificate while configuring your PMM Server
+# set ca_certificate to false. Set it to true if you have have a certificate signed
+# by an CA.
+pmm_client_server_use_ssl: true
+pmm_client_server_use_ssl_ca_certificate: false
+
+
+# Services
+
+# Define services to be added or removed (eg: linux:metrics, mysql, mysql:metrics,
+# mysql:queries, mongodb, mongodb:metrics, mongodb:queries etc.).
+pmm_client_add_services: []
+pmm_client_remove_services: []
+
+# Define services to be started or stopped (eg: linux:metrics, mysql, mysql:metrics,
+# mysql:queries, mongodb, mongodb:metrics, mongodb:queries etc.).
+pmm_client_start_services: []
+pmm_client_stop_services: []
+
+
+# DB access
+
+# Define credentials for MySQL or MongoDB DB connections:
+pmm_client_db:
+  mysql:
+    host: localhost
+    port: 3306
+    username: root
+    password: toor
+    parameters: ''
+  mongodb:
+    host: localhost
+    port: 27017
+    username: root
+    password: toor
+    parameters: ''

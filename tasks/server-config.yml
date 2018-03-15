@@ -1,0 +1,69 @@
+---
+
+- name: Check if PMM Client is configured
+  command: pmm-admin list
+  ignore_errors: true
+  register: pmm_admin_list
+  changed_when: false
+
+- name: Configure PMM Client - Basic mode
+  command: >
+           pmm-admin config --server {{ pmm_client_server_host | quote }}:{{ pmm_client_server_port | quote }}
+  when: >
+        (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
+        (not pmm_client_server_basic_auth) and
+        (not pmm_client_server_use_ssl)
+
+- name: Configure PMM Client - Basic auth
+  command: >
+           pmm-admin config --server {{ pmm_client_server_host | quote }}:{{ pmm_client_server_port | quote }}
+           --server-user {{ pmm_client_server_basic_auth_username | quote }}
+           --server-password {{ pmm_client_server_basic_auth_password | quote }}
+  when: >
+        (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
+        (pmm_client_server_basic_auth) and
+        (not pmm_client_server_use_ssl)
+
+- name: Configure PMM Client - SSL mode with self signed SSL certificate
+  command: >
+           pmm-admin config --server {{ pmm_client_server_host | quote }}:{{ pmm_client_server_port | quote }}
+           --server-insecure-ssl
+  when: >
+        (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
+        (not pmm_client_server_basic_auth) and
+        (pmm_client_server_use_ssl) and
+        (not pmm_client_server_use_ssl_ca_certificate)
+
+- name: Configure PMM Client - SSL mode with CA signed SSL certificate
+  command: >
+           pmm-admin config --server {{ pmm_client_server_host | quote }}:{{ pmm_client_server_port | quote }}
+           --server-ssl
+  when: >
+        (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
+        (not pmm_client_server_basic_auth) and
+        (pmm_client_server_use_ssl) and
+        (pmm_client_server_use_ssl_ca_certificate)
+
+- name: Configure PMM Client - Combined mode (basic auth and SSL) with self signed SSL certificate
+  command: >
+           pmm-admin config --server {{ pmm_client_server_host | quote }}:{{ pmm_client_server_port | quote }}
+           --server-user {{ pmm_client_server_basic_auth_username | quote }}
+           --server-password {{ pmm_client_server_basic_auth_password | quote }}
+           --server-insecure-ssl
+  when: >
+        (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
+        (pmm_client_server_basic_auth) and
+        (pmm_client_server_use_ssl) and
+        (not pmm_client_server_use_ssl_ca_certificate)
+
+- name: Configure PMM Client - Combined mode (basic auth and SSL) with CA signed SSL certificate
+  command: >
+           pmm-admin config --server {{ pmm_client_server_host | quote }}:{{ pmm_client_server_port | quote }}
+           --server-user {{ pmm_client_server_basic_auth_username | quote }}
+           --server-password {{ pmm_client_server_basic_auth_password | quote }}
+           --server-ssl
+  when: >
+        (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
+        (pmm_client_server_basic_auth) and
+        (pmm_client_server_use_ssl) and
+        (pmm_client_server_use_ssl_ca_certificate)
