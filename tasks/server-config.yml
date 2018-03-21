@@ -9,6 +9,8 @@
 - name: Configure PMM Client - Basic mode
   command: >
            pmm-admin config --server {{ pmm_client_server_host | quote }}:{{ pmm_client_server_port | quote }}
+           --client-name {{ pmm_client_name | quote }}
+           --config-file {{ pmm_client_config_file | quote }}
   when: >
         (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
         (not pmm_client_server_basic_auth) and
@@ -19,6 +21,8 @@
            pmm-admin config --server {{ pmm_client_server_host | quote }}:{{ pmm_client_server_port | quote }}
            --server-user {{ pmm_client_server_basic_auth_username | quote }}
            --server-password {{ pmm_client_server_basic_auth_password | quote }}
+           --client-name {{ pmm_client_name | quote }}
+           --config-file {{ pmm_client_config_file | quote }}
   when: >
         (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
         (pmm_client_server_basic_auth) and
@@ -28,6 +32,8 @@
   command: >
            pmm-admin config --server {{ pmm_client_server_host | quote }}:{{ pmm_client_server_port | quote }}
            --server-insecure-ssl
+           --client-name {{ pmm_client_name | quote }}
+           --config-file {{ pmm_client_config_file | quote }}
   when: >
         (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
         (not pmm_client_server_basic_auth) and
@@ -38,6 +44,8 @@
   command: >
            pmm-admin config --server {{ pmm_client_server_host | quote }}:{{ pmm_client_server_port | quote }}
            --server-ssl
+           --client-name {{ pmm_client_name | quote }}
+           --config-file {{ pmm_client_config_file | quote }}
   when: >
         (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
         (not pmm_client_server_basic_auth) and
@@ -50,6 +58,8 @@
            --server-user {{ pmm_client_server_basic_auth_username | quote }}
            --server-password {{ pmm_client_server_basic_auth_password | quote }}
            --server-insecure-ssl
+           --client-name {{ pmm_client_name | quote }}
+           --config-file {{ pmm_client_config_file | quote }}
   when: >
         (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
         (pmm_client_server_basic_auth) and
@@ -62,6 +72,8 @@
            --server-user {{ pmm_client_server_basic_auth_username | quote }}
            --server-password {{ pmm_client_server_basic_auth_password | quote }}
            --server-ssl
+           --client-name {{ pmm_client_name | quote }}
+           --config-file {{ pmm_client_config_file | quote }}
   when: >
         (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
         (pmm_client_server_basic_auth) and

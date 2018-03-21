@@ -9,6 +9,9 @@ pmm_client_enabled: true
 pmm_client_pkgs:
   - pmm-client
 
+# PMM Client name:
+pmm_client_name: "{{ ansible_hostname }}"
+
 # Define service names (no need to change those values):
 pmm_service_names:
   linux:metrics: pmm-linux-metrics-42000
@@ -17,6 +20,9 @@ pmm_service_names:
   mongodb:queries: pmm-mongodb-queries-0
   mongodb:metrics: pmm-mongodb-metrics-42003
   proxysql:metrics: pmm-proxysql-metrics-42004
+
+# Config file:
+pmm_client_config_file: /usr/local/percona/pmm-client/pmm.yml
 
 
 # Repository
@@ -74,10 +80,8 @@ pmm_client_db:
     port: 3306
     username: root
     password: toor
-    parameters:
   mongodb:
     host: localhost
     port: 27017
     username: root
     password: toor
-    parameters:

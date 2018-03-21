@@ -2,7 +2,7 @@
 
 galaxy_info:
   author: Timo Runge
-  description: PMM Client for Debian/Ubuntu and RHEL/CentOS
+  description: Percona PMM Client for Debian and RedHat based distributions
   license: BSD
   min_ansible_version: 2.2.0
   platforms:

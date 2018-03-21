@@ -24,7 +24,7 @@ them are as follows. (For all variables, take a look at [defaults/main.yml](defa
 
 ```yaml
 # IP address and port of the pmm-server:
-pmm_client_server_host: localhost
+pmm_client_server_host: 172.20.0.10
 pmm_client_server_port: 443
 # Disable basic auth:
 pmm_client_server_basic_auth: false
