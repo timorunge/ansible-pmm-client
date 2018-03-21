@@ -50,7 +50,6 @@ pmm_client_db:
     port: 3306
     username: root
     password: toor
-    parameters: ''
 ```
 
 Examples

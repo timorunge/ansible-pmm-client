@@ -7,16 +7,22 @@
         ('proxysql:metrics' in item)
   with_items: "{{ pmm_client_add_services }}"
 
-- name: Adding MySQL and MongoDB services to monitoring
+- name: Adding MySQL services to monitoring
   shell: >
          if ! pmm-admin list | grep {{ item | quote }} ; then
-         pmm-admin add {{ item | quote }} --host {{ pmm_client_db[item][host] | quote }}
-         --port {{ pmm_client_db[item][port] | quote }} --user {{ pmm_client_db[item][username] | quote }}
-         --password {{ pmm_client_db[item][password] | quote }} {{ pmm_client_db[item][parameters] | quote }} ; fi
-  when: >
-        ('linux:metrics' not in item) and
-        ('proxysql:metrics' not in item) or
-        ('mysql' == item or 'mongodb' == item)
+         pmm-admin add {{ item | quote }} --host {{ pmm_client_db['mysql']['host'] | quote }}
+         --port {{ pmm_client_db['mysql']['port'] | quote }} --user {{ pmm_client_db['mysql']['username'] | quote }}
+         --password {{ pmm_client_db['mysql']['password'] | quote }} {{ pmm_client_db['mysql']['parameters'] | default(omit) | quote }} ; fi
+  when: ('mysql' in item)
+  with_items: "{{ pmm_client_add_services }}"
+
+- name: Adding MongoDB services to monitoring
+  shell: >
+         if ! pmm-admin list | grep {{ item | quote }} ; then
+         pmm-admin add {{ item | quote }} --host {{ pmm_client_db['mongodb']['host'] | quote }}
+         --port {{ pmm_client_db['mongodb']['port'] | quote }} --user {{ pmm_client_db['mongodb']['username'] | quote }}
+         --password {{ pmm_client_db['mongodb']['password'] | quote }} {{ pmm_client_db['mongodb']['parameters'] | default(omit) | quote }} ; fi
+  when: ('mongodb' in item)
   with_items: "{{ pmm_client_add_services }}"
 
 - name: Removing services from monitoring

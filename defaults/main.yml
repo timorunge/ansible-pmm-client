@@ -74,10 +74,10 @@ pmm_client_db:
     port: 3306
     username: root
     password: toor
-    parameters: ''
+    parameters:
   mongodb:
     host: localhost
     port: 27017
     username: root
     password: toor
-    parameters: ''
+    parameters:
