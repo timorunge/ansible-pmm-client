@@ -1,5 +1,5 @@
 pmm-client
-=====
+==========
 
 This role installs and configures the Percona PMM Client.
 
@@ -53,7 +53,7 @@ pmm_client_db:
 ```
 
 Examples
-========
+--------
 
 ## 1) Install the PMM Client with no basic auth and disabled SSL
 
