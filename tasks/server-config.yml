@@ -12,6 +12,7 @@
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
   when: >
+        (not ansible_check_mode) and
         (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
         (not pmm_client_server_basic_auth) and
         (not pmm_client_server_use_ssl)
@@ -24,6 +25,7 @@
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
   when: >
+        (not ansible_check_mode) and
         (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
         (pmm_client_server_basic_auth) and
         (not pmm_client_server_use_ssl)
@@ -35,6 +37,7 @@
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
   when: >
+        (not ansible_check_mode) and
         (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
         (not pmm_client_server_basic_auth) and
         (pmm_client_server_use_ssl) and
@@ -47,6 +50,7 @@
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
   when: >
+        (not ansible_check_mode) and
         (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
         (not pmm_client_server_basic_auth) and
         (pmm_client_server_use_ssl) and
@@ -61,6 +65,7 @@
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
   when: >
+        (not ansible_check_mode) and
         (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
         (pmm_client_server_basic_auth) and
         (pmm_client_server_use_ssl) and
@@ -75,6 +80,7 @@
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
   when: >
+        (not ansible_check_mode) and
         (pmm_admin_list.stdout.find('PMM client is not configured') != -1) and
         (pmm_client_server_basic_auth) and
         (pmm_client_server_use_ssl) and

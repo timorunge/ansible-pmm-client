@@ -4,6 +4,7 @@
   package:
     name: "{{ item }}"
     state: present
+    update_cache: yes
   with_items: "{{ pmm_client_pkgs }}"
   when: (pmm_client_use_official_repo)
 

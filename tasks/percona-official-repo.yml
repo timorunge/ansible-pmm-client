@@ -4,7 +4,6 @@
   apt:
     deb: "{{ pmm_client_debian_repo }}"
     state: present
-    update_cache: yes
   when: >
         (pmm_client_use_official_repo) and
         (ansible_os_family == 'Debian')
@@ -13,7 +12,6 @@
   yum:
     name: "{{ pmm_client_redhat_repo }}"
     state: present
-    update_cache: yes
   when: >
         (pmm_client_use_official_repo) and
         (ansible_os_family == 'RedHat')
