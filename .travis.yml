@@ -12,7 +12,7 @@ addons:
       - python-pip
 
 install:
-  - pip install ansible ansible-lint
+  - pip install ansible==2.4.0 ansible-lint
   - ansible --version
   - ansible-galaxy install timorunge.pmm-client --roles-path=./
   - printf '[defaults]\nroles_path=../' >ansible.cfg
@@ -20,7 +20,6 @@ install:
 script:
   - ansible-lint tasks/main.yml
   - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
-  # - ansible-playbook -i tests/inventory tests/test.yml --connection=local --become
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

@@ -4,7 +4,6 @@
   package:
     name: "{{ item }}"
     state: present
-    update_cache: yes
   with_items: "{{ pmm_client_pkgs }}"
   when: (pmm_client_use_official_repo)
 
@@ -12,7 +11,6 @@
   apt:
     deb: "{{ pmm_client_debian_pkg }}"
     state: present
-    update_cache: yes
   when: >
         (not pmm_client_use_official_repo) and
         (ansible_os_family == 'Debian')
@@ -21,7 +19,6 @@
   yum:
     name: "{{ pmm_client_redhat_pkg }}"
     state: present
-    update_cache: yes
   when: >
         (not pmm_client_use_official_repo) and
         (ansible_os_family == 'RedHat')
