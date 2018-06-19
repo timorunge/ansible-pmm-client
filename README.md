@@ -23,6 +23,8 @@ The variables that can be passed to this role and a brief description about
 them are as follows. (For all variables, take a look at [defaults/main.yml](defaults/main.yml))
 
 ```yaml
+# Define the version
+pmm_client_version: 1.11.0
 # IP address and port of the pmm-server:
 pmm_client_server_host: 172.20.0.10
 pmm_client_server_port: 443
@@ -99,8 +101,10 @@ Examples
 - hosts: all
   become: yes
   vars:
+    pmm_client_version: 1.11.0
+    pmm_client_version_revision: 1
     pmm_client_use_official_repo: false
-    pmm_client_debian_pkg: "https://www.percona.com/downloads/pmm/1.8.1/binary/debian/xenial/x86_64/pmm-client_1.8.1-1.{{ ansible_distribution_release }}_amd64.deb"
+    pmm_client_debian_pkg: "https://www.percona.com/downloads/pmm/{{ pmm_client_version }}/binary/debian/{{ ansible_distribution_release }}/x86_64/pmm-client_{{ pmm_client_version }}-{{ pmm_client_version_revision }}.{{ ansible_distribution_release }}_amd64.deb"
   roles:
     - timorunge.pmm-client
 ```

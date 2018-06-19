@@ -9,6 +9,11 @@ pmm_client_enabled: true
 pmm_client_pkgs:
   - pmm-client
 
+# Define the version
+pmm_client_percona_release: 0.1-6
+pmm_client_version: 1.11.0
+pmm_client_version_revision: 1
+
 # PMM Client name:
 pmm_client_name: "{{ ansible_hostname }}"
 
@@ -31,13 +36,13 @@ pmm_client_config_file: /usr/local/percona/pmm-client/pmm.yml
 pmm_client_use_official_repo: true
 
 # URLs to configure Percona repositories:
-pmm_client_debian_repo: "https://repo.percona.com/apt/percona-release_0.1-6.{{ansible_distribution_release}}_all.deb"
-pmm_client_redhat_repo: https://www.percona.com/redir/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm
+pmm_client_debian_repo: "https://repo.percona.com/apt/percona-release_{{ pmm_client_percona_release }}.{{ansible_distribution_release}}_all.deb"
+pmm_client_redhat_repo: "https://www.percona.com/redir/downloads/percona-release/redhat/{{ pmm_client_percona_release }}/percona-release-{{ pmm_client_percona_release }}.noarch.rpm"
 
 # URLs for direct download of the Percona PMM Client.
 # To use a direct download please set pmm_client_use_official_repo to false.
-pmm_client_debian_pkg: "https://www.percona.com/downloads/pmm/1.11.0/binary/debian/{{ ansible_distribution_release }}/x86_64/pmm-client_1.11.0.{{ ansible_distribution_release }}_amd64.deb"
-pmm_client_redhat_pkg: https://www.percona.com/downloads/pmm/1.11.0/binary/redhat/7/x86_64/pmm-client-1.11.0-1.el7.x86_64.rpm
+pmm_client_debian_pkg: "https://www.percona.com/downloads/pmm/{{ pmm_client_version }}/binary/debian/{{ ansible_distribution_release }}/x86_64/pmm-client_{{ pmm_client_version }}-{{ pmm_client_version_revision }}.{{ ansible_distribution_release }}_amd64.deb"
+pmm_client_redhat_pkg: "https://www.percona.com/downloads/pmm/{{ pmm_client_version }}/binary/redhat/7/x86_64/pmm-client-{{ pmm_client_version }}-{{ pmm_client_version_revision }}.el7.x86_64.rpm"
 
 
 # Server
