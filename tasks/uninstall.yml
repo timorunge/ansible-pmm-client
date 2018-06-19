@@ -2,6 +2,5 @@
 
 - name: Uninstall PMM Client
   package:
-    name: "{{ item }}"
+    name: "{{ pmm_client_pkgs }}"
     state: absent
-  with_items: "{{ pmm_client_pkgs }}"

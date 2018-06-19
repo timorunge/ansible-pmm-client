@@ -2,9 +2,8 @@
 
 - name: Install PMM Client packages from official repo
   package:
-    name: "{{ item }}"
+    name: "{{ pmm_client_pkgs }}"
     state: present
-  with_items: "{{ pmm_client_pkgs }}"
   when: (pmm_client_use_official_repo)
 
 - name: Install PMM Client package from URL - Debian based distributions
