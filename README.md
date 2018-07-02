@@ -1,4 +1,4 @@
-pmm-client
+pmm_client
 ==========
 
 This role installs and configures the Percona PMM Client.
@@ -13,7 +13,7 @@ Install
 -------
 
 ```sh
-ansible-galaxy install timorunge.pmm-client
+ansible-galaxy install timorunge.pmm_client
 ```
 
 Role Variables
@@ -72,7 +72,7 @@ Examples
     pmm_client_start_services:
       - linux:metrics
   roles:
-    - timorunge.pmm-client
+    - timorunge.pmm_client
 ```
 
 ## 2) Install the PMM Client with basic auth and enabled SSL
@@ -92,7 +92,7 @@ Examples
     pmm_client_start_services:
       - linux:metrics
   roles:
-    - timorunge.pmm-client
+    - timorunge.pmm_client
 ```
 
 ## 3) Install the PMM Client from a defined URL
@@ -106,7 +106,7 @@ Examples
     pmm_client_use_official_repo: false
     pmm_client_debian_pkg: "https://www.percona.com/downloads/pmm/{{ pmm_client_version }}/binary/debian/{{ ansible_distribution_release }}/x86_64/pmm-client_{{ pmm_client_version }}-{{ pmm_client_version_revision }}.{{ ansible_distribution_release }}_amd64.deb"
   roles:
-    - timorunge.pmm-client
+    - timorunge.pmm_client
 ```
 
 ## 4) Uninstall the PMM Client
@@ -117,7 +117,7 @@ Examples
   vars:
     pmm_client_enabled: false
   roles:
-    - timorunge.pmm-client
+    - timorunge.pmm_client
 ```
 
 Dependencies

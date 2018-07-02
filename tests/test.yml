@@ -9,4 +9,4 @@
     pmm_client_debian_repo: https://www.percona.com/downloads/pmm/1.8.1/binary/debian/xenial/x86_64/pmm-client_1.8.1-1.xenial_amd64.deb
 
   roles:
-    - timorunge.pmm-client
+    - timorunge.pmm_client

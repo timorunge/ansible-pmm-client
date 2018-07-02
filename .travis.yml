@@ -16,7 +16,7 @@ install:
   - pip install ansible==2.4.0
   - pip install ansible-lint coverage junit-xml splitter
   - ansible --version
-  - ansible-galaxy install timorunge.pmm-client --roles-path=./
+  - ansible-galaxy install timorunge.pmm_client --roles-path=./
   - echo $'[defaults]\nroles_path=./' > ansible.cfg
 
 script:
