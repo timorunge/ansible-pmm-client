@@ -6,7 +6,7 @@ This role installs and configures the Percona PMM Client.
 Requirements
 ------------
 
-This role requires Ansible 2.2 or higher and platform requirements are listed
+This role requires Ansible 2.4 or higher and platform requirements are listed
 in the metadata file.
 
 Install

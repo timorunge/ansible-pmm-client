@@ -19,9 +19,10 @@ galaxy_info:
     versions:
       - all
   galaxy_tags:
-    - pmm
-    - percona
-    - monitoring
     - database
+    - monitoring
+    - percona
+    - pmm
+    - sytem
 
 dependencies: []
