@@ -120,6 +120,15 @@ Examples
     - timorunge.pmm_client
 ```
 
+Testing
+-------
+
+[![Build Status](https://travis-ci.org/timorunge/ansible-pmm-client.svg?branch=master)](https://travis-ci.org/timorunge/ansible-pmm-client)
+
+Travis tests are done with [Docker](https://www.docker.com) and
+[docker_test_runner](https://github.com/timorunge/docker-test-runner). Tests
+on Travis are performing linting and syntax checks.
+
 Dependencies
 ------------
 
