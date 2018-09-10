@@ -11,7 +11,7 @@ pmm_client_pkgs:
 
 # Define the version
 pmm_client_percona_release: 0.1-6
-pmm_client_version: 1.11.0
+pmm_client_version: 1.14.1
 pmm_client_version_revision: 1
 
 # PMM Client name:
