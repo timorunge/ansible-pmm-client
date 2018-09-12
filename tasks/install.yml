@@ -4,6 +4,7 @@
   package:
     name: "{{ pmm_client_pkgs }}"
     state: present
+    update_cache: yes
   when: (pmm_client_use_official_repo)
 
 - name: Install PMM Client package from URL - Debian based distributions
@@ -12,7 +13,7 @@
     state: present
   when: >
         (not pmm_client_use_official_repo) and
-        (ansible_os_family == 'Debian')
+        (ansible_os_family == "Debian")
 
 - name: Install PMM Client package from URL - RedHat based distributions
   yum:
@@ -20,4 +21,4 @@
     state: present
   when: >
         (not pmm_client_use_official_repo) and
-        (ansible_os_family == 'RedHat')
+        (ansible_os_family == "RedHat")

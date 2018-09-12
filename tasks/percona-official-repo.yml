@@ -6,7 +6,7 @@
     state: present
   when: >
         (pmm_client_use_official_repo) and
-        (ansible_os_family == 'Debian')
+        (ansible_os_family == "Debian")
 
 - name: Ensure Percona YUM repository
   yum:
@@ -14,4 +14,4 @@
     state: present
   when: >
         (pmm_client_use_official_repo) and
-        (ansible_os_family == 'RedHat')
+        (ansible_os_family == "RedHat")
