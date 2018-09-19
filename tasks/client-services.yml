@@ -4,10 +4,10 @@
   shell: >
          if ! pmm-admin list | grep {{ item | quote }} ; then
          pmm-admin add {{ item | quote }} --config-file {{ pmm_client_config_file | quote }} {{ pmm_client_name | quote }} ; fi
+  loop: "{{ pmm_client_add_services | flatten(levels=1) }}"
   when: >
         ("linux:metrics" in item) or
         ("proxysql:metrics" in item)
-  with_items: "{{ pmm_client_add_services }}"
 
 - name: Adding MySQL services to monitoring
   shell: >
@@ -16,8 +16,8 @@
          --port {{ pmm_client_db["mysql"]["port"] | quote }} --user {{ pmm_client_db["mysql"]["username"] | quote }}
          --password {{ pmm_client_db["mysql"]["password"] | quote }}
          --config-file {{ pmm_client_config_file | quote }} {{ pmm_client_name | quote }} ; fi
+  loop: "{{ pmm_client_add_services | flatten(levels=1) }}"
   when: ("mysql" in item)
-  with_items: "{{ pmm_client_add_services }}"
 
 - name: Adding MongoDB services to monitoring
   shell: >
@@ -26,23 +26,23 @@
          --port {{ pmm_client_db["mongodb"]["port"] | quote }} --user {{ pmm_client_db["mongodb"]["username"] | quote }}
          --password {{ pmm_client_db["mongodb"]["password"] | quote }}
          --config-file {{ pmm_client_config_file | quote }} {{ pmm_client_name | quote }} ; fi
+  loop: "{{ pmm_client_add_services | flatten(levels=1) }}"
   when: ("mongodb" in item)
-  with_items: "{{ pmm_client_add_services }}"
 
 - name: Removing services from monitoring
   shell: "if pmm-admin list | grep {{ item | quote }} ; then pmm-admin remove {{ item | quote }} {{ pmm_client_name | quote }} ; fi"
-  with_items: "{{ pmm_client_remove_services }}"
+  loop: "{{ pmm_client_remove_services | flatten(levels=1) }}"
 
 - name: Start monitoring services
   service:
     name: "{{ pmm_service_names[item] }}"
     state: started
     enabled: yes
-  with_items: "{{ pmm_client_start_services }}"
+  loop: "{{ pmm_client_start_services | flatten(levels=1) }}"
 
 - name: Stop monitoring services
   service:
     name: "{{ pmm_service_names[item] }}"
     state: stopped
     enabled: no
-  with_items: "{{ pmm_client_stop_services }}"
+  loop: "{{ pmm_client_stop_services | flatten(levels=1) }}"

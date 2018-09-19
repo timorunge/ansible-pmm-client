@@ -1,12 +1,9 @@
 ---
 
 - hosts: localhost
-  remote_user: root
-  gather_facts: true
-
+  gather_facts: True
   vars:
-    pmm_client_use_official_repo: false
-    pmm_client_debian_repo: https://www.percona.com/downloads/pmm/1.8.1/binary/debian/xenial/x86_64/pmm-client_1.8.1-1.xenial_amd64.deb
-
+    pmm_client_use_official_repo: False
+    pmm_client_debian_repo: https://www.percona.com/downloads/pmm/1.14.1/binary/debian/xenial/x86_64/pmm-client_1.14.1-1.xenial_amd64.deb
   roles:
     - timorunge.pmm_client

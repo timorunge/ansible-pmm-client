@@ -5,7 +5,7 @@
     name: "{{ pmm_client_pkgs }}"
     state: present
     update_cache: yes
-  when: (pmm_client_use_official_repo)
+  when: pmm_client_use_official_repo
 
 - name: Install PMM Client package from URL - Debian based distributions
   apt:
