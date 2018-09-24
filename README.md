@@ -119,7 +119,7 @@ Examples
 - hosts: all
   become: yes
   vars:
-    pmm_client_version: 1.11.0
+    pmm_client_version: 1.14.1
     pmm_client_version_revision: 1
     pmm_client_use_official_repo: False
     pmm_client_debian_pkg: "https://www.percona.com/downloads/pmm/{{ pmm_client_version }}/binary/debian/{{ ansible_distribution_release }}/x86_64/pmm-client_{{ pmm_client_version }}-{{ pmm_client_version_revision }}.{{ ansible_distribution_release }}_amd64.deb"
