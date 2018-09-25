@@ -1,0 +1,7 @@
+---
+
+- name: Install dependency packages
+  package:
+    name: "{{ pmm_client_dependency_pkgs }}"
+    state: present
+    update_cache: "{{ omit if ((ansible_pkg_mgr == 'dnf') and (ansible_version is version('2.7', '<'))) else 'yes' }}"

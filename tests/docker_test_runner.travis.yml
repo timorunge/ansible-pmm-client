@@ -2,7 +2,7 @@
 
 project_name: pmm_client
 
-threads: 2
+threads: 4
 
 log_level: INFO
 
@@ -17,6 +17,15 @@ docker_image_path: "__PATH__/tests/docker"
 docker_images:
   - CentOS_7
   - Debian_9_4
+  - Ubuntu_16_04
+  - Ubuntu_18_04
+
+docker_container_environments:
+  pkg:
+    pmm_client_use_official_repo: "True"
+  "1_14_1":
+    pmm_client_use_official_repo: "False"
+    pmm_client_version: "1.14.1"
 
 docker_container_volumes:
   "__PATH__":

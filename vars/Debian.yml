@@ -1,0 +1,20 @@
+---
+
+# List of dependency packages:
+# Type: List
+pmm_client_dependency_pkgs:
+  - xz-utils
+
+# List of packages:
+# Type: List
+pmm_client_pkgs:
+  - pmm-client
+
+# URLs to configure Percona repositories:
+# Type: Str
+pmm_client_repo: "https://repo.percona.com/apt/percona-release_{{ pmm_client_percona_release }}.{{ansible_distribution_release}}_all.deb"
+
+# URLs for direct download of the Percona PMM Client.
+# To use a direct download please set pmm_client_use_official_repo to False.
+# Type: Str
+pmm_client_pkg: "https://www.percona.com/downloads/pmm/{{ pmm_client_version }}/binary/debian/{{ ansible_distribution_release }}/x86_64/pmm-client_{{ pmm_client_version }}-{{ pmm_client_version_revision }}.{{ ansible_distribution_release }}_amd64.deb"

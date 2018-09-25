@@ -4,16 +4,13 @@
 
 # Enable the client installation. Set to False to uninstall the PMM client.
 # Type: Bool
+pmm_client_install: True
+
+# Enable the client; if set to `False` there will be just the installation.
+# Type: Bool
 pmm_client_enabled: True
 
-# List of packages:
-# Type: List
-pmm_client_pkgs:
-  - pmm-client
-
-# Define the version
-# Type: Str
-pmm_client_percona_release: 0.1-6
+# Define the PMM Client version
 # Type: Int
 pmm_client_version: 1.14.1
 pmm_client_version_revision: 1
@@ -43,17 +40,9 @@ pmm_client_config_file: /usr/local/percona/pmm-client/pmm.yml
 # Type: Bool
 pmm_client_use_official_repo: True
 
-# URLs to configure Percona repositories:
+# Define the repository version package
 # Type: Str
-pmm_client_debian_repo: "https://repo.percona.com/apt/percona-release_{{ pmm_client_percona_release }}.{{ansible_distribution_release}}_all.deb"
-pmm_client_redhat_repo: "https://www.percona.com/redir/downloads/percona-release/redhat/{{ pmm_client_percona_release }}/percona-release-{{ pmm_client_percona_release }}.noarch.rpm"
-
-# URLs for direct download of the Percona PMM Client.
-# To use a direct download please set pmm_client_use_official_repo to False.
-# Type: Str
-pmm_client_debian_pkg: "https://www.percona.com/downloads/pmm/{{ pmm_client_version }}/binary/debian/{{ ansible_distribution_release }}/x86_64/pmm-client_{{ pmm_client_version }}-{{ pmm_client_version_revision }}.{{ ansible_distribution_release }}_amd64.deb"
-pmm_client_redhat_pkg: "https://www.percona.com/downloads/pmm/{{ pmm_client_version }}/binary/redhat/7/x86_64/pmm-client-{{ pmm_client_version }}-{{ pmm_client_version_revision }}.el7.x86_64.rpm"
-
+pmm_client_percona_release: 0.1-6
 
 # Server
 
@@ -77,6 +66,10 @@ pmm_client_server_basic_auth_password: admin
 pmm_client_server_use_ssl: True
 pmm_client_server_use_ssl_ca_certificate: False
 
+# Force to set client name on initial setup
+# Type: Bool
+pmm_client_force_setup: False
+
 
 # Services
 
@@ -86,7 +79,7 @@ pmm_client_server_use_ssl_ca_certificate: False
 # - mongodb:metrics
 # - mongodb:queries
 # - mysql
-# - mysql:metrics,
+# - mysql:metrics
 # - mysql:queries
 
 # Define services to be added or removed (eg: linux:metrics, mysql, mysql:metrics,

@@ -2,16 +2,12 @@
 
 - name: Ensure Percona APT repository
   apt:
-    deb: "{{ pmm_client_debian_repo }}"
+    deb: "{{ pmm_client_repo }}"
     state: present
-  when: >
-        (pmm_client_use_official_repo) and
-        (ansible_os_family == "Debian")
+  when: ansible_os_family == "Debian"
 
 - name: Ensure Percona YUM repository
   yum:
-    name: "{{ pmm_client_redhat_repo }}"
+    name: "{{ pmm_client_repo }}"
     state: present
-  when: >
-        (pmm_client_use_official_repo) and
-        (ansible_os_family == "RedHat")
+  when: ansible_os_family == "RedHat"

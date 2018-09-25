@@ -11,6 +11,7 @@
            pmm-admin config --server {{ pmm_client_server_host | quote }}:{{ pmm_client_server_port | quote }}
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
+           {{ '--force' if pmm_client_force_setup }}
   when: >
         (not ansible_check_mode) and
         (pmm_admin_list.stdout.find("PMM client is not configured") != -1) and
@@ -24,6 +25,7 @@
            --server-password {{ pmm_client_server_basic_auth_password | quote }}
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
+           {{ '--force' if pmm_client_force_setup }}
   when: >
         (not ansible_check_mode) and
         (pmm_admin_list.stdout.find("PMM client is not configured") != -1) and
@@ -36,6 +38,7 @@
            --server-insecure-ssl
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
+           {{ '--force' if pmm_client_force_setup }}
   when: >
         (not ansible_check_mode) and
         (pmm_admin_list.stdout.find("PMM client is not configured") != -1) and
@@ -49,6 +52,7 @@
            --server-ssl
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
+           {{ '--force' if pmm_client_force_setup }}
   when: >
         (not ansible_check_mode) and
         (pmm_admin_list.stdout.find("PMM client is not configured") != -1) and
@@ -64,6 +68,7 @@
            --server-insecure-ssl
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
+           {{ '--force' if pmm_client_force_setup }}
   when: >
         (not ansible_check_mode) and
         (pmm_admin_list.stdout.find("PMM client is not configured") != -1) and
@@ -79,6 +84,7 @@
            --server-ssl
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
+           {{ '--force' if pmm_client_force_setup }}
   when: >
         (not ansible_check_mode) and
         (pmm_admin_list.stdout.find("PMM client is not configured") != -1) and
