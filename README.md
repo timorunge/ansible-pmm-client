@@ -1,10 +1,8 @@
-pmm_client
-==========
+# pmm_client
 
 This role installs and configures the Percona PMM Client.
 
-Requirements
-------------
+## Requirements
 
 This role requires
 [Ansible 2.5.0](https://docs.ansible.com/ansible/devel/roadmap/ROADMAP_2_5.html)
@@ -18,15 +16,13 @@ pip install ansible==2.7.0
 
 All platform requirements are listed in the metadata file.
 
-Install
--------
+## Install
 
 ```sh
 ansible-galaxy install timorunge.pmm_client
 ```
 
-Role Variables
---------------
+## Role Variables
 
 The variables that can be passed to this role and a brief description about
 them are as follows. (For all variables, take a look at [defaults/main.yml](defaults/main.yml))
@@ -75,8 +71,7 @@ pmm_client_db:
     password: toor
 ```
 
-Examples
---------
+## Examples
 
 ### 1) Install the PMM Client with no basic auth and disabled SSL
 
@@ -148,7 +143,7 @@ fatal: [proxysql-aN8thi]: FAILED! => {"changed": false, "cmd": ["pmm-admin", "li
 
 TASK [timorunge.pmm-client : Configure PMM Client - Basic mode] ************************************************************************************
 fatal: [proxysql-aN8thi]: FAILED! => {"changed": true, "cmd": ["pmm-admin", "config", "--server", "172.20.0.10:80", "--client-name", "proxysql-aN8thi", "--config-file", "/usr/local/percona/pmm-client/pmm.yml"], "delta": "0:00:00.239708", "end": "2018-09-25 09:39:50.590280", "msg": "non-zero return code", "rc": 1, "start": "2018-09-25 09:39:50.350572", "stderr": "", "stderr_lines": [], "stdout": "Another client with the same name 'proxysql-aN8thi' detected, its address is 172.20.0.11.\nIt has the active services so this name is not available.\n\nSpecify the other one using --client-name flag.\n\nIn case this is the correct client node that was previously uninstalled with unreachable PMM server,\nyou can add --force flag to proceed further. Do not use this flag otherwise.\nThe orphaned remote services will be removed automatically.", "stdout_lines": ["Another client with the same name 'proxysql-aN8thi' detected, its address is 172.20.0.11.", "It has the active services so this name is not available.", "", "Specify the other one using --client-name flag.", "", "In case this is the correct client node that was previously uninstalled with unreachable PMM server,", "you can add --force flag to proceed further. Do not use this flag otherwise.", "The orphaned remote services will be removed automatically."]}
-	to retry, use: --limit @... main.retry
+  to retry, use: --limit @... main.retry
 
 PLAY RECAP *****************************************************************************************************************************************
 proxysql-aN8thi            : ok=9    changed=0    unreachable=0    failed=1
@@ -205,8 +200,7 @@ proxysql-aN8thi            : ok=13   changed=2    unreachable=0    failed=0
     - timorunge.pmm_client
 ```
 
-Testing
--------
+## Testing
 
 [![Build Status](https://travis-ci.org/timorunge/ansible-pmm-client.svg?branch=master)](https://travis-ci.org/timorunge/ansible-pmm-client)
 
@@ -214,11 +208,11 @@ Tests are done with [Docker](https://www.docker.com) and
 [docker_test_runner](https://github.com/timorunge/docker-test-runner) which
 brings up the following containers with different environment settings:
 
-* CentOS 7
-* Debian 9.4 (Stretch)
-* Ubuntu 16.04 (Xenial Xerus)
-* Ubuntu 17.10 (Artful Aardvark)
-* Ubuntu 18.04 (Bionic Beaver)
+- CentOS 7
+- Debian 9.4 (Stretch)
+- Ubuntu 16.04 (Xenial Xerus)
+- Ubuntu 17.10 (Artful Aardvark)
+- Ubuntu 18.04 (Bionic Beaver)
 
 Ansible 2.7.0 is installed on all containers and a
 [test playbook](tests/test.yml) is getting applied.
@@ -236,22 +230,20 @@ curl https://raw.githubusercontent.com/timorunge/docker-test-runner/master/insta
 Since the build time on Travis is limited for public repositories the
 automated tests are limited to:
 
-* CentOS 7
-* Debian 9.4 (Stretch)
-* Ubuntu 16.04 (Xenial Xerus)
-* Ubuntu 18.04 (Bionic Beaver)
+- CentOS 7
+- Debian 9.4 (Stretch)
+- Ubuntu 16.04 (Xenial Xerus)
+- Ubuntu 18.04 (Bionic Beaver)
 
-Dependencies
-------------
+## Dependencies
 
 None
 
-License
--------
+## License
+
 BSD
 
-Author Information
-------------------
+## Author Information
 
 - Based on the Ansible role from [Chris Sam](https://github.com/chrissam/ansible-role-pmm-client)
 - Heavily modified by: Timo Runge
