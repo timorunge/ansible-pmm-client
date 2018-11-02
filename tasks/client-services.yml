@@ -32,6 +32,7 @@
 - name: Removing services from monitoring
   shell: "if pmm-admin list | grep {{ item | quote }} ; then pmm-admin remove {{ item | quote }} {{ pmm_client_name | quote }} ; fi"
   loop: "{{ pmm_client_remove_services | flatten(levels=1) }}"
+  when: pmm_client_remove_services
 
 - name: Start monitoring services
   service:

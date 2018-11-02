@@ -11,7 +11,7 @@ or higher.
 You can simply use pip to install (and define) a stable version:
 
 ```sh
-pip install ansible==2.7.0
+pip install ansible==2.7.1
 ```
 
 All platform requirements are listed in the metadata file.
@@ -214,7 +214,7 @@ brings up the following containers with different environment settings:
 - Ubuntu 17.10 (Artful Aardvark)
 - Ubuntu 18.04 (Bionic Beaver)
 
-Ansible 2.7.0 is installed on all containers and a
+Ansible 2.7.1 is installed on all containers and a
 [test playbook](tests/test.yml) is getting applied.
 
 For further details and additional checks take a look at the
@@ -241,7 +241,7 @@ None
 
 ## License
 
-BSD
+[BSD 3-Clause "New" or "Revised" License](https://spdx.org/licenses/BSD-3-Clause.html)
 
 ## Author Information
 
