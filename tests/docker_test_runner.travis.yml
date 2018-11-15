@@ -23,9 +23,9 @@ docker_images:
 docker_container_environments:
   pkg:
     pmm_client_use_official_repo: "True"
-  "1_14_1":
+  "1_16_0":
     pmm_client_use_official_repo: "False"
-    pmm_client_version: "1.14.1"
+    pmm_client_version: "1.16.0"
 
 docker_container_volumes:
   "__PATH__":

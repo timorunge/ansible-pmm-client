@@ -12,7 +12,7 @@ pmm_client_enabled: True
 
 # Define the PMM Client version
 # Type: Int
-pmm_client_version: 1.14.1
+pmm_client_version: 1.16.0
 pmm_client_version_revision: 1
 
 # PMM Client name:

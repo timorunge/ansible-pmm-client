@@ -30,7 +30,7 @@ them are as follows. (For all variables, take a look at [defaults/main.yml](defa
 ```yaml
 # Define the version
 # Type: Int
-pmm_client_version: 1.14.1
+pmm_client_version: 1.16.0
 # IP address and port of the pmm-server:
 # Type: Str
 pmm_client_server_host: 172.20.0.10
@@ -117,7 +117,7 @@ pmm_client_db:
 - hosts: all
   become: yes
   vars:
-    pmm_client_version: 1.14.1
+    pmm_client_version: 1.16.0
     pmm_client_version_revision: 1
     pmm_client_use_official_repo: False
     pmm_client_debian_pkg: "https://www.percona.com/downloads/pmm/{{ pmm_client_version }}/binary/debian/{{ ansible_distribution_release }}/x86_64/pmm-client_{{ pmm_client_version }}-{{ pmm_client_version_revision }}.{{ ansible_distribution_release }}_amd64.deb"
@@ -211,7 +211,6 @@ brings up the following containers with different environment settings:
 - CentOS 7
 - Debian 9.4 (Stretch)
 - Ubuntu 16.04 (Xenial Xerus)
-- Ubuntu 17.10 (Artful Aardvark)
 - Ubuntu 18.04 (Bionic Beaver)
 
 Ansible 2.7.1 is installed on all containers and a
