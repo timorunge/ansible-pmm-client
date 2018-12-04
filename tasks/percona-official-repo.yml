@@ -4,10 +4,18 @@
   apt:
     deb: "{{ pmm_client_repo }}"
     state: present
+  delay: 10
+  register: result
+  retries: 3
+  until: result is succeeded
   when: ansible_os_family == "Debian"
 
 - name: Ensure Percona YUM repository
   yum:
     name: "{{ pmm_client_repo }}"
     state: present
+  delay: 10
+  register: result
+  retries: 3
+  until: result is succeeded
   when: ansible_os_family == "RedHat"

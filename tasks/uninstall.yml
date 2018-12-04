@@ -4,3 +4,7 @@
   package:
     name: "{{ pmm_client_pkgs }}"
     state: absent
+  delay: 10
+  register: result
+  retries: 3
+  until: result is succeeded
