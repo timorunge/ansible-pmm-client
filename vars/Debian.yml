@@ -12,7 +12,7 @@ pmm_client_pkgs:
 
 # URLs to configure Percona repositories:
 # Type: Str
-pmm_client_repo: "https://repo.percona.com/apt/percona-release_{{ pmm_client_percona_release }}.{{ansible_distribution_release}}_all.deb"
+pmm_client_repo: "https://repo.percona.com/apt/percona-release_{{ pmm_client_percona_release }}.{{ ansible_distribution_release | lower }}_all.deb"
 
 # URLs for direct download of the Percona PMM Client.
 # To use a direct download please set pmm_client_use_official_repo to False.

@@ -42,7 +42,7 @@ pmm_client_use_official_repo: True
 
 # Define the repository version package
 # Type: Str
-pmm_client_percona_release: 0.1-6
+pmm_client_percona_release: latest
 
 # Server
 

@@ -11,7 +11,7 @@ pmm_client_pkgs:
 
 # URLs to configure Percona repositories:
 # Type: Str
-pmm_client_repo: "https://www.percona.com/redir/downloads/percona-release/redhat/{{ pmm_client_percona_release }}/percona-release-{{ pmm_client_percona_release }}.noarch.rpm"
+pmm_client_repo: "https://repo.percona.com/yum/percona-release-{{ pmm_client_percona_release }}.noarch.rpm"
 
 # URLs for direct download of the Percona PMM Client.
 # To use a direct download please set pmm_client_use_official_repo to False.
