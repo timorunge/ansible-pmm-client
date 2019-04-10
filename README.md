@@ -11,7 +11,7 @@ or higher.
 You can simply use pip to install (and define) a stable version:
 
 ```sh
-pip install ansible==2.7.6
+pip install ansible==2.7.9
 ```
 
 All platform requirements are listed in the metadata file.
@@ -38,13 +38,13 @@ pmm_client_server_host: 172.20.0.10
 pmm_client_server_port: 443
 # Disable basic auth:
 # Type: Bool
-pmm_client_server_basic_auth: False
+pmm_client_server_basic_auth: false
 # Enable SSL:
 # Type: Bool
-pmm_client_server_use_ssl: True
+pmm_client_server_use_ssl: true
 # Force to set client name on initial setup
 # Type: Bool
-pmm_client_force_setup: False
+pmm_client_force_setup: false
 # Define services to be added or removed:
 # Type: List
 pmm_client_add_services:
@@ -81,8 +81,8 @@ pmm_client_db:
   vars:
     pmm_client_server_host: 172.20.0.10
     pmm_client_server_port: 443
-    pmm_client_server_basic_auth: False
-    pmm_client_server_use_ssl: False
+    pmm_client_server_basic_auth: false
+    pmm_client_server_use_ssl: false
     pmm_client_add_services:
       - linux:metrics
     pmm_client_start_services:
@@ -99,10 +99,10 @@ pmm_client_db:
   vars:
     pmm_client_server_host: 172.20.0.10
     pmm_client_server_port: 443
-    pmm_client_server_basic_auth: True
+    pmm_client_server_basic_auth: true
     pmm_client_server_basic_auth_username: admin
     pmm_client_server_basic_auth_password: mySecurePassword
-    pmm_client_server_use_ssl: True
+    pmm_client_server_use_ssl: true
     pmm_client_add_services:
       - linux:metrics
     pmm_client_start_services:
@@ -119,7 +119,7 @@ pmm_client_db:
   vars:
     pmm_client_version: 1.17.0
     pmm_client_version_revision: 1
-    pmm_client_use_official_repo: False
+    pmm_client_use_official_repo: false
     pmm_client_debian_pkg: "https://www.percona.com/downloads/pmm/{{ pmm_client_version }}/binary/debian/{{ ansible_distribution_release }}/x86_64/pmm-client_{{ pmm_client_version }}-{{ pmm_client_version_revision }}.{{ ansible_distribution_release }}_amd64.deb"
   roles:
     - timorunge.pmm_client
@@ -157,7 +157,7 @@ Basically you have two options:
 - hosts: all
   become: yes
   vars:
-    pmm_client_force_setup: True
+    pmm_client_force_setup: true
   roles:
     - timorunge.pmm_client
 ```
@@ -167,7 +167,7 @@ Basically you have two options:
 This is the recommended way.
 
 ```sh
-$ ansible-playbook main.yml -i inventory -b --limit "proxysql-aN8thi" --diff -e "{ pmm_client_force_setup: True }"
+$ ansible-playbook main.yml -i inventory -b --limit "proxysql-aN8thi" --diff -e "{ pmm_client_force_setup: true }"
 
 ...
 
@@ -195,7 +195,7 @@ proxysql-aN8thi            : ok=13   changed=2    unreachable=0    failed=0
 - hosts: all
   become: yes
   vars:
-    pmm_client_enabled: False
+    pmm_client_enabled: false
   roles:
     - timorunge.pmm_client
 ```
@@ -213,7 +213,7 @@ brings up the following containers with different environment settings:
 - Ubuntu 16.04 (Xenial Xerus)
 - Ubuntu 18.04 (Bionic Beaver)
 
-Ansible 2.7.6 is installed on all containers and a
+Ansible 2.7.9 is installed on all containers and a
 [test playbook](tests/test.yml) is getting applied.
 
 For further details and additional checks take a look at the
@@ -240,7 +240,7 @@ None
 
 ## License
 
-[BSD 3-Clause "New" or "Revised" License](https://spdx.org/licenses/BSD-3-Clause.html)
+[BSD 3-Clause "New" or "Revised" License](LICENSE)
 
 ## Author Information
 

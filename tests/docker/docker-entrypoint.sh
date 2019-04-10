@@ -5,7 +5,7 @@ printf "[defaults]\nroles_path=/etc/ansible/roles\n" > /ansible/ansible.cfg
 
 test -z ${pmm_client_use_official_repo} && \
   echo "Missing environment variable: pmm_client_use_official_repo" && exit 1
-(test "${pmm_client_use_official_repo}" = "False" && \
+(test "${pmm_client_use_official_repo}" = "false" && \
   test -z ${pmm_client_version}) && \
   echo "Missing environment variable: pmm_client_version" && exit 1
 

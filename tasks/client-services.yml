@@ -2,6 +2,7 @@
 
 - name: Adding Linux and ProxySQL services to monitoring
   shell: >
+         set -o pipefail ;
          if ! pmm-admin list | grep {{ item | quote }} ; then
          pmm-admin add {{ item | quote }} --config-file {{ pmm_client_config_file | quote }} {{ pmm_client_name | quote }} ; fi
   loop: "{{ pmm_client_add_services | flatten(levels=1) }}"
@@ -11,6 +12,7 @@
 
 - name: Adding MySQL services to monitoring
   shell: >
+         set -o pipefail ;
          if ! pmm-admin list | grep {{ item | quote }} ; then
          pmm-admin add {{ item | quote }} --host {{ pmm_client_db["mysql"]["host"] | quote }}
          --port {{ pmm_client_db["mysql"]["port"] | quote }} --user {{ pmm_client_db["mysql"]["username"] | quote }}
@@ -21,6 +23,7 @@
 
 - name: Adding MongoDB services to monitoring
   shell: >
+         set -o pipefail ;
          if ! pmm-admin list | grep {{ item | quote }} ; then
          pmm-admin add {{ item | quote }} --host {{ pmm_client_db["mongodb"]["host"] | quote }}
          --port {{ pmm_client_db["mongodb"]["port"] | quote }} --user {{ pmm_client_db["mongodb"]["username"] | quote }}
@@ -30,7 +33,7 @@
   when: ("mongodb" in item)
 
 - name: Removing services from monitoring
-  shell: "if pmm-admin list | grep {{ item | quote }} ; then pmm-admin remove {{ item | quote }} {{ pmm_client_name | quote }} ; fi"
+  shell: "set -o pipefail ; if pmm-admin list | grep {{ item | quote }} ; then pmm-admin remove {{ item | quote }} {{ pmm_client_name | quote }} ; fi"
   loop: "{{ pmm_client_remove_services | flatten(levels=1) }}"
   when: pmm_client_remove_services
 

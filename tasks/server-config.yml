@@ -2,9 +2,9 @@
 
 - name: Check if PMM Client is configured
   command: pmm-admin list
-  ignore_errors: True
+  ignore_errors: true
   register: pmm_admin_list
-  changed_when: False
+  changed_when: false
 
 - name: Configure PMM Client - Basic mode
   command: >

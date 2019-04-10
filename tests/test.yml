@@ -1,8 +1,8 @@
 ---
 
 - hosts: localhost
-  gather_facts: True
+  gather_facts: true
   vars:
-    pmm_client_enabled: False
+    pmm_client_enabled: false
   roles:
     - timorunge.pmm_client

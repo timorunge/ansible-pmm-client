@@ -2,13 +2,13 @@
 
 # General
 
-# Enable the client installation. Set to False to uninstall the PMM client.
+# Enable the client installation. Set to false to uninstall the PMM client.
 # Type: Bool
-pmm_client_install: True
+pmm_client_install: true
 
-# Enable the client; if set to `False` there will be just the installation.
+# Enable the client; if set to `false` there will be just the installation.
 # Type: Bool
-pmm_client_enabled: True
+pmm_client_enabled: true
 
 # Define the PMM Client version
 # Type: Int
@@ -38,7 +38,7 @@ pmm_client_config_file: /usr/local/percona/pmm-client/pmm.yml
 
 # Use the official Percona repository:
 # Type: Bool
-pmm_client_use_official_repo: True
+pmm_client_use_official_repo: true
 
 # Define the repository version package
 # Type: Str
@@ -54,21 +54,21 @@ pmm_client_server_port: 443
 
 # If the PMM Server is using basic auth:
 # Type: Bool
-pmm_client_server_basic_auth: True
+pmm_client_server_basic_auth: true
 # Type: Str
 pmm_client_server_basic_auth_username: admin
 pmm_client_server_basic_auth_password: admin
 
 # If you have used a self signed SSL certificate while configuring your PMM Server
-# set ca_certificate to False. Set it to true if you have have a certificate signed
+# set ca_certificate to false. Set it to true if you have have a certificate signed
 # by an CA.
 # Type: Bool
-pmm_client_server_use_ssl: True
-pmm_client_server_use_ssl_ca_certificate: False
+pmm_client_server_use_ssl: true
+pmm_client_server_use_ssl_ca_certificate: false
 
 # Force to set client name on initial setup
 # Type: Bool
-pmm_client_force_setup: False
+pmm_client_force_setup: false
 
 
 # Services
