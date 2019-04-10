@@ -21,6 +21,17 @@
   loop: "{{ pmm_client_add_services | flatten(levels=1) }}"
   when: ("mysql" in item)
 
+- name: Adding PostgreSQL services to monitoring
+  shell: >
+         set -o pipefail ;
+         if ! pmm-admin list | grep {{ item | quote }} ; then
+         pmm-admin add {{ item | quote }} --host {{ pmm_client_db["postgresql"]["host"] | quote }}
+         --port {{ pmm_client_db["postgresql"]["port"] | quote }} --user {{ pmm_client_db["postgresql"]["username"] | quote }}
+         --password {{ pmm_client_db["postgresql"]["password"] | quote }}
+         --config-file {{ pmm_client_config_file | quote }} {{ pmm_client_name | quote }} ; fi
+  loop: "{{ pmm_client_add_services | flatten(levels=1) }}"
+  when: ("postgresql:metrics" in item)
+
 - name: Adding MongoDB services to monitoring
   shell: >
          set -o pipefail ;

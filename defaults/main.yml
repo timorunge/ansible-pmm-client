@@ -28,6 +28,7 @@ pmm_service_names:
   mongodb:queries: pmm-mongodb-queries-0
   mongodb:metrics: pmm-mongodb-metrics-42003
   proxysql:metrics: pmm-proxysql-metrics-42004
+  postgresql:metrics: pmm-postgresql-metrics-42005
 
 # Config file:
 # Type: Str
@@ -81,6 +82,7 @@ pmm_client_force_setup: false
 # - mysql
 # - mysql:metrics
 # - mysql:queries
+# - postgresql:metrics
 
 # Define services to be added or removed (eg: linux:metrics, mysql, mysql:metrics,
 # mysql:queries, mongodb, mongodb:metrics, mongodb:queries etc.).
@@ -89,6 +91,7 @@ pmm_client_force_setup: false
 #   - linux:metrics
 #   - mysql:metrics
 #   - mongodb:metrics
+#   - postgresql:metrics
 # pmm_client_remove_services:
 #   - mysql:queries
 pmm_client_add_services: []
@@ -100,6 +103,7 @@ pmm_client_remove_services: []
 #   - linux:metrics
 #   - mysql:metrics
 #   - mongodb:metrics
+#   - postgresql:metrics
 # pmm_client_stop_services:
 #   - mysql:queries
 pmm_client_start_services: []
@@ -122,4 +126,9 @@ pmm_client_stop_services: []
 #     port: 27017
 #     username: root
 #     password: toor
+#   postgresql:
+#     host: localhost
+#     port: 5432
+#     username: postgres
+#     password: postgres
 pmm_client_db: {}

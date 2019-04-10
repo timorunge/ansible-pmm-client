@@ -51,6 +51,7 @@ pmm_client_add_services:
   - linux:metrics
   - mysql:metrics
   - mongodb:metrics
+  - postgresql:metrics
 pmm_client_remove_services:
   - mysql:queries
 # Define services to be started or stopped:
@@ -59,6 +60,7 @@ pmm_client_start_services:
   - linux:metrics
   - mysql:metrics
   - mongodb:metrics
+  - postgresql:metrics
 pmm_client_stop_services:
   - mysql:queries
 # Define credentials for the MySQL DB connection:
