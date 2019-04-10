@@ -21,6 +21,7 @@
 
 - name: Adding PostgreSQL services to monitoring
   shell: >
+         set -o pipefail ;
          if ! pmm-admin list | grep {{ item | quote }} ; then
          pmm-admin add {{ item | quote }} --host {{ pmm_client_db["postgresql"]["host"] | quote }}
          --port {{ pmm_client_db["postgresql"]["port"] | quote }} --user {{ pmm_client_db["postgresql"]["username"] | quote }}
