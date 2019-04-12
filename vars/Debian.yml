@@ -8,7 +8,7 @@ pmm_client_dependency_pkgs:
 # List of packages:
 # Type: List
 pmm_client_pkgs:
-  - pmm-client
+  - "pmm-client={{ pmm_client_version }}-{{pmm_client_version_revision }}.{{ ansible_distribution_release }}"
 
 # URLs to configure Percona repositories:
 # Type: Str
