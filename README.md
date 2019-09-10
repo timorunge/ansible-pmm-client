@@ -11,7 +11,7 @@ or higher.
 You can simply use pip to install (and define) a stable version:
 
 ```sh
-pip install ansible==2.7.9
+pip install ansible==2.8.4
 ```
 
 All platform requirements are listed in the metadata file.
@@ -30,7 +30,7 @@ them are as follows. (For all variables, take a look at [defaults/main.yml](defa
 ```yaml
 # Define the version
 # Type: Int
-pmm_client_version: 1.17.0
+pmm_client_version: 1.17.1
 # IP address and port of the pmm-server:
 # Type: Str
 pmm_client_server_host: 172.20.0.10
@@ -119,7 +119,7 @@ pmm_client_db:
 - hosts: all
   become: yes
   vars:
-    pmm_client_version: 1.17.0
+    pmm_client_version: 1.17.1
     pmm_client_version_revision: 1
     pmm_client_use_official_repo: false
     pmm_client_debian_pkg: "https://www.percona.com/downloads/pmm/{{ pmm_client_version }}/binary/debian/{{ ansible_distribution_release }}/x86_64/pmm-client_{{ pmm_client_version }}-{{ pmm_client_version_revision }}.{{ ansible_distribution_release }}_amd64.deb"
@@ -215,7 +215,7 @@ brings up the following containers with different environment settings:
 - Ubuntu 16.04 (Xenial Xerus)
 - Ubuntu 18.04 (Bionic Beaver)
 
-Ansible 2.7.9 is installed on all containers and a
+Ansible 2.8.4 is installed on all containers and a
 [test playbook](tests/test.yml) is getting applied.
 
 For further details and additional checks take a look at the

@@ -10,7 +10,7 @@ disable_logging: false
 
 docker_image_build_args:
   ansible_role: timorunge.pmm_client
-  ansible_version: 2.7.9
+  ansible_version: 2.8.4
 
 docker_image_path: "__PATH__/tests/docker"
 
@@ -23,9 +23,9 @@ docker_images:
 docker_container_environments:
   pkg:
     pmm_client_use_official_repo: "true"
-  "1_17_0":
+  "1_17_1":
     pmm_client_use_official_repo: "false"
-    pmm_client_version: "1.17.0"
+    pmm_client_version: "1.17.1"
 
 docker_container_volumes:
   "__PATH__":
