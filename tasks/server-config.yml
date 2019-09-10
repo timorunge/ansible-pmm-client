@@ -12,6 +12,8 @@
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
            {{ '--force' if pmm_client_force_setup else omit }}
+  args:
+    executable: /bin/bash
   when: >
         (not ansible_check_mode) and
         (pmm_admin_list.stdout.find("PMM client is not configured") != -1) and
@@ -26,6 +28,8 @@
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
            {{ '--force' if pmm_client_force_setup else omit }}
+  args:
+    executable: /bin/bash
   when: >
         (not ansible_check_mode) and
         (pmm_admin_list.stdout.find("PMM client is not configured") != -1) and
@@ -39,6 +43,8 @@
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
            {{ '--force' if pmm_client_force_setup else omit }}
+  args:
+    executable: /bin/bash
   when: >
         (not ansible_check_mode) and
         (pmm_admin_list.stdout.find("PMM client is not configured") != -1) and
@@ -53,6 +59,8 @@
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
            {{ '--force' if pmm_client_force_setup else omit }}
+  args:
+    executable: /bin/bash
   when: >
         (not ansible_check_mode) and
         (pmm_admin_list.stdout.find("PMM client is not configured") != -1) and
@@ -68,6 +76,8 @@
            --server-insecure-ssl
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
+  args:
+    executable: /bin/bash
            {{ '--force' if pmm_client_force_setup else omit }}
   when: >
         (not ansible_check_mode) and
@@ -84,6 +94,8 @@
            --server-ssl
            --client-name {{ pmm_client_name | quote }}
            --config-file {{ pmm_client_config_file | quote }}
+  args:
+    executable: /bin/bash
            {{ '--force' if pmm_client_force_setup else omit }}
   when: >
         (not ansible_check_mode) and
