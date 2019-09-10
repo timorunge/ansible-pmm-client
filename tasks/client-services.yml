@@ -5,6 +5,8 @@
          set -o pipefail ;
          if ! pmm-admin list | grep {{ item | quote }} ; then
          pmm-admin add {{ item | quote }} --config-file {{ pmm_client_config_file | quote }} {{ pmm_client_name | quote }} ; fi
+  args:
+    executable: /bin/bash
   loop: "{{ pmm_client_add_services | flatten(levels=1) }}"
   when: >
         ("linux:metrics" in item) or
@@ -18,6 +20,8 @@
          --port {{ pmm_client_db["mysql"]["port"] | quote }} --user {{ pmm_client_db["mysql"]["username"] | quote }}
          --password {{ pmm_client_db["mysql"]["password"] | quote }}
          --config-file {{ pmm_client_config_file | quote }} {{ pmm_client_name | quote }} ; fi
+  args:
+    executable: /bin/bash
   loop: "{{ pmm_client_add_services | flatten(levels=1) }}"
   when: ("mysql" in item)
 
@@ -29,6 +33,8 @@
          --port {{ pmm_client_db["postgresql"]["port"] | quote }} --user {{ pmm_client_db["postgresql"]["username"] | quote }}
          --password {{ pmm_client_db["postgresql"]["password"] | quote }}
          --config-file {{ pmm_client_config_file | quote }} {{ pmm_client_name | quote }} ; fi
+  args:
+    executable: /bin/bash
   loop: "{{ pmm_client_add_services | flatten(levels=1) }}"
   when: ("postgresql:metrics" in item)
 
@@ -40,11 +46,15 @@
          --port {{ pmm_client_db["mongodb"]["port"] | quote }} --user {{ pmm_client_db["mongodb"]["username"] | quote }}
          --password {{ pmm_client_db["mongodb"]["password"] | quote }}
          --config-file {{ pmm_client_config_file | quote }} {{ pmm_client_name | quote }} ; fi
+  args:
+    executable: /bin/bash
   loop: "{{ pmm_client_add_services | flatten(levels=1) }}"
   when: ("mongodb" in item)
 
 - name: Removing services from monitoring
   shell: "set -o pipefail ; if pmm-admin list | grep {{ item | quote }} ; then pmm-admin remove {{ item | quote }} {{ pmm_client_name | quote }} ; fi"
+  args:
+    executable: /bin/bash
   loop: "{{ pmm_client_remove_services | flatten(levels=1) }}"
   when: pmm_client_remove_services
 
