@@ -1,6 +1,1 @@
 .idea
-.vagrant
-docker_test_runner.py
-tests/ansible.cfg
-tests/results.log
-tests/test.retry

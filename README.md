@@ -1,3 +1,7 @@
+> **Status: Archived.**
+>
+> This repository is no longer maintained and is kept for reference only.
+
 # pmm_client
 
 This role installs and configures the Percona PMM Client.
@@ -202,40 +206,6 @@ proxysql-aN8thi            : ok=13   changed=2    unreachable=0    failed=0
     - timorunge.pmm_client
 ```
 
-## Testing
-
-[![Build Status](https://travis-ci.org/timorunge/ansible-pmm-client.svg?branch=master)](https://travis-ci.org/timorunge/ansible-pmm-client)
-
-Tests are done with [Docker](https://www.docker.com) and
-[docker_test_runner](https://github.com/timorunge/docker-test-runner) which
-brings up the following containers with different environment settings:
-
-- CentOS 7
-- Debian 9.4 (Stretch)
-- Ubuntu 16.04 (Xenial Xerus)
-- Ubuntu 18.04 (Bionic Beaver)
-
-Ansible 2.8.4 is installed on all containers and a
-[test playbook](tests/test.yml) is getting applied.
-
-For further details and additional checks take a look at the
-[docker_test_runner configuration](tests/docker_test_runner.yml) and the
-[Docker entrypoint](tests/docker/docker-entrypoint.sh).
-
-```sh
-# Testing locally:
-curl https://raw.githubusercontent.com/timorunge/docker-test-runner/master/install.sh | sh
-./docker_test_runner.py -f tests/docker_test_runner.yml
-```
-
-Since the build time on Travis is limited for public repositories the
-automated tests are limited to:
-
-- CentOS 7
-- Debian 9.4 (Stretch)
-- Ubuntu 16.04 (Xenial Xerus)
-- Ubuntu 18.04 (Bionic Beaver)
-
 ## Dependencies
 
 None
@@ -247,4 +217,3 @@ None
 ## Author Information
 
 - Based on the Ansible role from [Chris Sam](https://github.com/chrissam/ansible-role-pmm-client)
-- Heavily modified by: Timo Runge
