@@ -42,9 +42,8 @@
   shell: >
          set -o pipefail ;
          if ! pmm-admin list | grep {{ item | quote }} ; then
-         pmm-admin add {{ item | quote }} --host {{ pmm_client_db["mongodb"]["host"] | quote }}
-         --port {{ pmm_client_db["mongodb"]["port"] | quote }} --user {{ pmm_client_db["mongodb"]["username"] | quote }}
-         --password {{ pmm_client_db["mongodb"]["password"] | quote }}
+         pmm-admin add {{ item | quote }} --uri {{ pmm_client_db["mongodb"]["uri"] | quote }}
+         {{ '--cluster ' + pmm_client_db["mongodb"]["cluster"] | quote if ( not "mongodb:queries" in item and pmm_client_db["mongodb"]["cluster"] is defined ) else '' }}
          --config-file {{ pmm_client_config_file | quote }} {{ pmm_client_name | quote }} ; fi
   args:
     executable: /bin/bash
